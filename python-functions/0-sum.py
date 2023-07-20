@@ -1,3 +1,6 @@
-def add(a, b):
-    return a + b
-print(add(3, 5))
+def add(a,b):
+    while b != 0:
+        carry = a & b
+        a = a ^ b
+        b = carry << 1
+    return a

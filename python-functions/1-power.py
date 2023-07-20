@@ -11,4 +11,5 @@ def pow(a, b):
         a *= a
         b //= 2
 
-    return result
+    # Round the result to 10 decimal places
+    return round(result, 10)

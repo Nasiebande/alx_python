@@ -5,14 +5,11 @@ def main():
     num_arguments = len(sys.argv) - 1
 
     # Print the number of arguments
-    print(f"{num_arguments} argument{'s' if num_arguments != 1 else ''}:", end=' ')
-
-    # Print the list of arguments
     if num_arguments == 0:
-        print(".", end='')
+        print("0 arguments.")
     else:
-        print()
-
+        print(f"{num_arguments} argument{'s' if num_arguments != 1 else ''}:")
+        
         # Print each argument with its position
         for i, arg in enumerate(sys.argv[1:], start=1):
             print(f"{i}: {arg}")

@@ -1,8 +1,21 @@
 a = 1
 b = 2
 
-from add_0 import add
+def add(a, b):
+    """My addition function
 
-result = add(a, b)
+    Args:
+        a: first integer
+        b: second integer
 
-print("{} + {} = {}".format(a, b, result))
+    Returns:
+        The return value. a + b
+    """
+    return a + b
+
+if __name__ == "__main__":
+    # Calculate the result
+    result = add(a, b)
+
+    # Print the result using string formatting
+    print(f"{a} + {b} = {result}")

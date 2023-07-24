@@ -3,7 +3,7 @@ def best_score(a_dictionary):
         return None
 
     best_key = None
-    best_value = float('-inf')  # Set to negative infinity to handle negative values
+    best_value = float('-inf')
 
     for key, value in a_dictionary.items():
         if isinstance(value, int) and value > best_value:

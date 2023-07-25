@@ -15,10 +15,11 @@ def add(a, b):
     Returns:
         The return value. a + b
     """
-    return (a + b)
+    return a + b
 
-# Calculate the result of add(a, b)
-result = add(a, b)
+if __name__ == "__main__":
+    # Calculate the result of add(a, b)
+    result = add(a, b)
 
-# Print the result using string format
-print(f"{a} + {b} = {result}")
+    # Print the result using string format
+    print(f"{a} + {b} = {result}")

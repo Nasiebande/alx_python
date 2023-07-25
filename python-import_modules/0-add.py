@@ -23,3 +23,4 @@ if __name__ == "__main__":
 
     # Print the result using string format
     print(f"{a} + {b} = {result}")
+    

@@ -42,3 +42,40 @@ class Square:
             raise ValueError("size must be >= 0")
 
         self.__size = value
+
+
+# Test cases
+if __name__ == "__main__":
+    mysquare = Square(3)
+    print(type(mysquare))
+    print(mysquare.__dict__)
+
+    mysquare = Square(89)
+    print(type(mysquare))
+    print(mysquare.__dict__)
+
+    mysquare = Square()
+    print(type(mysquare))
+    print(mysquare.__dict__)
+
+    try:
+        mysquare = Square("3")
+        print(type(mysquare))
+        print(mysquare.__dict__)
+    except Exception as e:
+        print(e)
+
+    try:
+        mysquare = Square(3.14)
+        print(type(mysquare))
+        print(mysquare.__dict__)
+    except Exception as e:
+        print(e)
+
+    try:
+        mysquare = Square(-89)
+        print(type(mysquare))
+        print(mysquare.__dict__)
+    except Exception as e:
+        print(e)
+

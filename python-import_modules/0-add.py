@@ -1,26 +1,13 @@
 #!/usr/bin/python3
 
-# Define variables a and b
+"""Import a simple function"""
+
+from add_0 import add
+
 a = 1
 b = 2
+result = add(a, b)
 
-# Define the add function
-def add(a, b):
-    """My addition function
-
-    Args:
-        a: first integer
-        b: second integer
-
-    Returns:
-        The return value. a + b
-    """
-    return a + b
-
+print("{} + {} = {}".format(a, b, result))
 if __name__ == "__main__":
-    # Calculate the result of add(a, b)
-    result = add(a, b)
-
-    # Print the result using string format
-    print(f"{a} + {b} = {result}")
-    
+    pass    

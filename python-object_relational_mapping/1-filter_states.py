@@ -5,7 +5,8 @@ import sys
 if __name__ == "__main__":
     # Check if the correct number of arguments is provided
     if len(sys.argv) != 4:
-        print("Usage: {} <mysql username> <mysql password> <database name>".format(sys.argv[0]))
+        print("Usage: {} <mysql username> <mysql password> "
+              "<database name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Get command line arguments
@@ -23,21 +24,17 @@ if __name__ == "__main__":
             db=database
         )
 
-        # Create a cursor object to interact with the database
         cursor = db.cursor()
 
-        # Execute the query to retrieve states starting with 'N'
-        query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+        # Execute the query to retrieve states starting with 'n'
+        query = "SELECT * FROM states WHERE name LIKE 'n%' ORDER BY id ASC"
         cursor.execute(query)
 
-        # Fetch all the rows
         rows = cursor.fetchall()
 
-        # Print the results
         for row in rows:
             print(row)
 
-        # Close the cursor and database connection
         cursor.close()
         db.close()
 

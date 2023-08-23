@@ -27,7 +27,8 @@ if __name__ == "__main__":
 
         cursor = db.cursor()
 
-        query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
+        # Execute the query to retrieve matching states (case-insensitive)
+        query = "SELECT * FROM states WHERE UPPER(name) = UPPER(%s) ORDER BY id ASC"
         cursor.execute(query, (state_name,))
 
         rows = cursor.fetchall()

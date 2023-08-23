@@ -5,7 +5,8 @@ import sys
 if __name__ == "__main__":
     # Check if the correct number of arguments is provided
     if len(sys.argv) != 4:
-        print("Usage: {} <mysql username> <mysql password> <database name>".format(sys.argv[0]))
+        print("Usage: {} <mysql username> <mysql password> "
+              "<database name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Get command line arguments
@@ -27,9 +28,9 @@ if __name__ == "__main__":
         cursor = db.cursor()
 
         # Execute the query to retrieve cities and their corresponding state names
-        query = "SELECT cities.id, cities.name, states.name FROM cities \
-                 JOIN states ON cities.state_id = states.id \
-                 ORDER BY cities.id ASC"
+        query = "SELECT cities.id, cities.name, states.name FROM cities " \
+                "JOIN states ON cities.state_id = states.id " \
+                "ORDER BY cities.id ASC"
         cursor.execute(query)
 
         # Fetch all the rows

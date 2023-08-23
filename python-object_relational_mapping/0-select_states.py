@@ -5,7 +5,8 @@ import sys
 if __name__ == "__main__":
     # Check if the correct number of arguments is provided
     if len(sys.argv) != 4:
-        print("Usage: {} <mysql username> <mysql password> <database name>".format(sys.argv[0]))
+        print("Usage: {} <mysql username> <mysql password>"
+               "<database name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Get command line arguments
@@ -43,4 +44,3 @@ if __name__ == "__main__":
 
     except MySQLdb.Error as e:
         print("MySQL Error: {}".format(e))
-

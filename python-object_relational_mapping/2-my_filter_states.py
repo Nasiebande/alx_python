@@ -25,17 +25,21 @@ if __name__ == "__main__":
             db=database
         )
 
+        # Create a cursor object to interact with the database
         cursor = db.cursor()
 
-        # Execute the query to retrieve matching states (case-insensitive)
-        query = "SELECT * FROM states WHERE UPPER(name) = UPPER(%s) ORDER BY id ASC"
+        # Execute the query to retrieve matching states
+        query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
         cursor.execute(query, (state_name,))
 
+        # Fetch all the rows
         rows = cursor.fetchall()
 
+        # Print the results
         for row in rows:
             print(row)
 
+        # Close the cursor and database connection
         cursor.close()
         db.close()
 

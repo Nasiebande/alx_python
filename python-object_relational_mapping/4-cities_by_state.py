@@ -27,7 +27,6 @@ if __name__ == "__main__":
         # Create a cursor object to interact with the database
         cursor = db.cursor()
 
-        # Execute the query to retrieve cities and their corresponding state names
         query = "SELECT cities.id, cities.name, states.name FROM cities " \
                 "JOIN states ON cities.state_id = states.id " \
                 "ORDER BY cities.id ASC"

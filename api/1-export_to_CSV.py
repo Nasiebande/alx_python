@@ -1,45 +1,25 @@
 #!/usr/bin/python3
-"""
-Python script to export data in the CSV format.
-"""
+"""fetches information from JSONplaceholder API(task 0) and exports data to CSV format"""
 
-import csv
-import requests
-import sys
-
-
-def export_to_CSV(user_id):
-    employee_name = requests.get(
-        "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
-    ).json()["name"]
-    tasks = requests.get(
-        "https://jsonplaceholder.typicode.com/users/{}/todos".format(user_id)
-    ).json()
-
-    tasks_data = []
-
-    for task in tasks:
-        tasks_data.append(
-            [
-                str(user_id),
-                employee_name,
-                task["completed"],
-                task["title"],
-            ]
-        )
-
-    with open(str(user_id) + ".csv", "w", encoding="UTF8", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerows(tasks_data)
-
+from csv import DictWriter, QUOTE_ALL
+from requests import get
+from sys import argv
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 script_name.py EMPLOYEE_ID")
-        sys.exit(1)
+    main_url = "https://jsonplaceholder.typicode.com"
+    todo_url = main_url + "/user/{}/todos".format(argv[1])
+    name_url = main_url + "/users/{}".format(argv[1])
+    todo_result = get(todo_url).json()
+    name_result = get(name_url).json()
 
-    try:
-        employee_id = int(sys.argv[1])
-        export_to_CSV(employee_id)
-    except ValueError:
-        print("Please provide a valid employee ID.")
+    todo_list = []
+    for todo in todo_result:
+        todo_dict = {}
+        todo_dict.update({"user_ID": argv[1], "username": name_result.get(
+            "username"), "completed": todo.get("completed"),
+                          "task": todo.get("title")})
+        todo_list.append(todo_dict)
+    with open("{}.csv".format(argv[1]), 'w', newline='') as f:
+        header = ["user_ID", "username", "completed", "task"]
+        writer = DictWriter(f, fieldnames=header, quoting=QUOTE_ALL)
+        writer.writerows(todo_list)
